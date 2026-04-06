@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Dashboard | eSeva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard-body">
+    <aside class="sidebar glass">
+        <div class="sidebar-logo">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>eSeva</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="active"><i class="fa-solid fa-folder-open"></i> Document Vault</a>
+            <a href="#"><i class="fa-solid fa-user"></i> My Profile</a>
+            <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="logout-btn" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </aside>
+
+    <main class="dashboard-content">
+        <header class="dashboard-header">
+            <div class="user-welcome">
+                <h1>Welcome Back, Citizen</h1>
+                <p>Manage your documents securely</p>
+            </div>
+            <button id="open-upload-btn" class="main-btn btn-sm">
+                <i class="fa-solid fa-plus"></i> New Upload
+            </button>
+        </header>
+
+        <section class="stats-overview">
+            <div class="stat-card glass">
+                <div class="stat-icon blue"><i class="fa-solid fa-file-invoice"></i></div>
+                <div>
+                   <span id="total-docs" class="stat-val">0</span>
+                   <span class="stat-label">Total Documents</span>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon orange"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div>
+                   <span id="pending-docs" class="stat-val">0</span>
+                   <span class="stat-label">Pending Review</span>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+                <div>
+                   <span id="approved-docs" class="stat-val">0</span>
+                   <span class="stat-label">Verified Docs</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="vault-section">
+            <div class="section-title flex-row-space">
+                <h3>Your Document Vault</h3>
+                <div class="filters">
+                   <button class="badge filter-btn active" data-filter="all">All</button>
+                   <button class="badge filter-btn" data-filter="approved">Approved</button>
+                </div>
+            </div>
+            <div id="vault-grid" class="vault-grid">
+                <!-- Documents loaded via JS -->
+                 <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <p>Loading your documents...</p>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal-overlay hidden">
+        <div class="modal-content glass">
+            <div class="modal-header">
+                <h2>Upload Document</h2>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            <form id="upload-form">
+                <div class="input-group">
+                    <label>Select Document Type</label>
+                    <select id="doc-type" class="glass-select">
+                        <option value="Aadhaar">Aadhaar Card</option>
+                        <option value="PAN">PAN Card</option>
+                        <option value="Voter ID">Voter ID Card</option>
+                        <option value="Ration Card">Ration Card</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="upload-zone" id="drop-zone">
+                    <img id="file-preview-img" class="hidden" src="" alt="Preview">
+                    <div id="upload-placeholder">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Drag and Drop image or <strong>Browse</strong></p>
+                        <span class="small">Max Size 5MB (PNG, JPG)</span>
+                    </div>
+                    <input type="file" id="file-input" class="hidden" accept="image/*">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="submit-upload-btn" class="main-btn">
+                        <span>Upload & Review</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

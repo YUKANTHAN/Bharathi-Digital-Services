@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franchise Operator | eSeva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard-body">
+    <aside class="sidebar glass">
+        <div class="sidebar-logo">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>eSeva Operator</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="active"><i class="fa-solid fa-list-check"></i> Pending Reviews</a>
+            <a href="#"><i class="fa-solid fa-history"></i> Review History</a>
+            <a href="#"><i class="fa-solid fa-store"></i> Franchise Stats</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="logout-btn" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </aside>
+
+    <main class="dashboard-content">
+        <header class="dashboard-header">
+            <div class="user-welcome">
+                <h1 id="operator-name">Operator Dashboard</h1>
+                <p>Verify and manage citizen document requests</p>
+            </div>
+            <div class="review-stats">
+                 <div class="badge orange"><span id="pending-count">0</span> Pending</div>
+            </div>
+        </header>
+
+        <section class="review-queue">
+            <div class="section-title">
+                <h3>Review Queue</h3>
+            </div>
+            <div id="review-list" class="vault-grid">
+                <!-- Pending reviews loaded here -->
+                 <div class="loading-spinner">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <p>Loading pending reviews...</p>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Review Modal -->
+    <div id="review-modal" class="modal-overlay hidden">
+        <div class="modal-content glass modal-lg">
+            <div class="modal-header">
+                <h2>Document Review</h2>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="review-split">
+                <div class="doc-viewer">
+                    <h3>Document Image</h3>
+                    <div id="doc-preview-container">
+                        <img id="review-doc-img" src="" alt="Document Preview">
+                    </div>
+                </div>
+                <div class="review-controls">
+                    <h3>Action Required</h3>
+                    <div class="review-meta">
+                        <p><strong>Citizen:</strong> <span id="review-user">John Doe</span></p>
+                        <p><strong>Doc Type:</strong> <span id="review-type">Aadhaar</span></p>
+                        <p><strong>Submitted:</strong> <span id="review-date">Today, 12:00PM</span></p>
+                    </div>
+
+                    <div class="decision-feedback">
+                        <label>Review Feedback (Optional)</label>
+                        <textarea id="review-feedback" placeholder="Reason for approval or rejection..."></textarea>
+                    </div>
+
+                    <div class="decision-btns">
+                        <button id="approve-btn" class="main-btn" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fa-solid fa-check"></i> Approve & Verify
+                        </button>
+                        <button id="reject-btn" class="main-btn" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                            <i class="fa-solid fa-xmark"></i> Reject Document
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/operator.js"></script>
+</body>
+</html>
